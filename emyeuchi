@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>em yeu chi ♡</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:Georgia,"Times New Roman",serif;
+    color:white;
+    background:#090510;
+}
+
+
+/* =========================
+   BẦU TRỜI
+========================= */
+
+.sky{
+    position:fixed;
+    inset:0;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(255,120,180,.18),
+            transparent 28%),
+
+        radial-gradient(circle at 15% 20%,
+            rgba(170,100,255,.18),
+            transparent 30%),
+
+        radial-gradient(circle at 85% 80%,
+            rgba(255,80,150,.12),
+            transparent 30%),
+
+        linear-gradient(
+            135deg,
+            #090510,
+            #140918,
+            #090510
+        );
+}
+
+
+/* =========================
+   SAO
+========================= */
+
+.stars{
+    position:fixed;
+    inset:0;
+
+    background-image:
+        radial-gradient(circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px),
+
+        radial-gradient(circle,
+            rgba(255,180,220,.7) 1px,
+            transparent 1px);
+
+    background-size:
+        80px 80px,
+        140px 140px;
+
+    background-position:
+        20px 30px,
+        60px 90px;
+
+    opacity:.55;
+
+    animation:stars 25s linear infinite;
+}
+
+@keyframes stars{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-50px);
+    }
+
+}
+
+
+/* =========================
+   TRĂNG
+========================= */
+
+.moon{
+    position:fixed;
+
+    width:135px;
+    height:135px;
+
+    top:9%;
+    right:12%;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #ffffff,
+            #ffeef6 65%,
+            #ffd8e8
+        );
+
+    box-shadow:
+        0 0 25px rgba(255,220,235,.7),
+        0 0 70px rgba(255,150,200,.35),
+        0 0 130px rgba(255,100,180,.15);
+
+    opacity:.95;
+
+    animation:moonGlow 4s ease-in-out infinite;
+}
+
+@keyframes moonGlow{
+
+    0%,100%{
+        box-shadow:
+            0 0 25px rgba(255,220,235,.7),
+            0 0 70px rgba(255,150,200,.35);
+    }
+
+    50%{
+        box-shadow:
+            0 0 35px rgba(255,220,235,.9),
+            0 0 100px rgba(255,150,200,.5);
+    }
+
+}
+
+
+/* tạo hình trăng khuyết */
+
+.moon:after{
+    content:"";
+
+    position:absolute;
+
+    width:135px;
+    height:135px;
+
+    border-radius:50%;
+
+    background:#100815;
+
+    left:-32px;
+    top:-12px;
+}
+
+
+/* =========================
+   ÁNH SÁNG TRUNG TÂM
+========================= */
+
+.glow{
+    position:fixed;
+
+    width:450px;
+    height:450px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,110,180,.16),
+            transparent 70%
+        );
+
+    filter:blur(10px);
+
+    animation:glow 5s ease-in-out infinite;
+}
+
+@keyframes glow{
+
+    0%,100%{
+        transform:translate(-50%,-50%) scale(1);
+    }
+
+    50%{
+        transform:translate(-50%,-50%) scale(1.15);
+    }
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.container{
+    position:relative;
+
+    width:100%;
+    height:100svh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:25px;
+}
+
+
+.card{
+
+    position:relative;
+
+    width:min(650px,92vw);
+
+    padding:
+        60px
+        35px
+        55px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.09),
+            rgba(255,150,200,.035)
+        );
+
+    border:
+        1px solid rgba(255,200,225,.18);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        inset 0 0 40px rgba(255,160,210,.035);
+
+    backdrop-filter:blur(12px);
+
+    animation:appear 1.8s ease forwards;
+}
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================
+   DÒNG NHỎ
+========================= */
+
+.tiny{
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    color:rgba(255,210,230,.65);
+
+    margin-bottom:24px;
+}
+
+
+/* =========================
+   TIÊU ĐỀ
+========================= */
+
+h1{
+
+    font-size:clamp(
+        48px,
+        12vw,
+        100px
+    );
+
+    font-weight:normal;
+
+    letter-spacing:2px;
+
+    color:#fff8fb;
+
+    text-shadow:
+        0 0 10px rgba(255,170,210,.65),
+        0 0 35px rgba(255,100,180,.3);
+
+    animation:titlePulse 4s ease-in-out infinite;
+}
+
+@keyframes titlePulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.025);
+    }
+
+}
+
+
+/* =========================
+   TIM
+========================= */
+
+.heart{
+
+    display:inline-block;
+
+    color:#ff8fb8;
+
+    font-size:.8em;
+
+    text-shadow:
+        0 0 10px #ff7eae,
+        0 0 30px rgba(255,70,150,.7),
+        0 0 60px rgba(255,50,140,.35);
+
+    animation:heart 1.5s ease-in-out infinite;
+}
+
+@keyframes heart{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    15%{
+        transform:scale(1.25);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+
+    45%{
+        transform:scale(1.15);
+    }
+
+}
+
+
+/* =========================
+   DÒNG PHỤ
+========================= */
+
+.subtitle{
+
+    margin-top:28px;
+
+    font-size:clamp(
+        15px,
+        3.5vw,
+        21px
+    );
+
+    font-style:italic;
+
+    color:rgba(255,230,240,.72);
+
+    line-height:1.7;
+
+}
+
+
+/* =========================
+   DÒNG NGĂN
+========================= */
+
+.line{
+
+    width:100px;
+    height:1px;
+
+    margin:30px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,160,200,.8),
+            transparent
+        );
+}
+
+
+/* =========================
+   CUỐI CARD
+========================= */
+
+.forever{
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:rgba(255,255,255,.35);
+}
+
+
+/* =========================
+   HOA / TIM BAY
+========================= */
+
+.floating{
+
+    position:fixed;
+
+    bottom:-40px;
+
+    pointer-events:none;
+
+    color:rgba(255,150,195,.55);
+
+    animation:float linear forwards;
+}
+
+@keyframes float{
+
+    0%{
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    80%{
+        opacity:.55;
+    }
+
+    100%{
+        transform:
+            translateY(-110vh)
+            translateX(70px)
+            rotate(30deg);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================
+   CÁNH HOA RƠI
+========================= */
+
+.petal{
+
+    position:fixed;
+
+    top:-30px;
+
+    pointer-events:none;
+
+    color:rgba(255,170,205,.4);
+
+    animation:petalFall linear forwards;
+}
+
+@keyframes petalFall{
+
+    from{
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translateY(110vh)
+            translateX(100px)
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .moon{
+
+        width:85px;
+        height:85px;
+
+        top:9%;
+        right:8%;
+    }
+
+    .moon:after{
+
+        width:85px;
+        height:85px;
+
+        left:-20px;
+        top:-8px;
+    }
+
+    .card{
+
+        padding:
+            50px
+            22px
+            45px;
+
+        border-radius:25px;
+    }
+
+    .tiny{
+
+        font-size:9px;
+
+        letter-spacing:4px;
+    }
+
+    h1{
+
+        font-size:
+            clamp(
+                42px,
+                13vw,
+                75px
+            );
+    }
+
+    .subtitle{
+
+        font-size:15px;
+    }
+
+}
+
+
+/* =========================
+   MÁY NHỎ
+========================= */
+
+@media(max-width:360px){
+
+    .card{
+
+        padding:
+            40px
+            15px;
+    }
+
+    h1{
+
+        font-size:40px;
+    }
+
+    .subtitle{
+
+        font-size:14px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="sky"></div>
+
+<div class="stars"></div>
+
+<div class="glow"></div>
+
+<div class="moon"></div>
+
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="tiny">
+            just for you ♡
+        </div>
+
+
+        <h1>
+            em yeu chi
+            <span class="heart">♥</span>
+        </h1>
+
+
+        <div class="subtitle">
+            Một chút dịu dàng,<br>
+            dành riêng cho chị.
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="forever">
+            with love · always
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   TIM BAY
+========================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className="floating";
+
+    heart.innerHTML =
+        Math.random() > .5
+        ? "♡"
+        : "♥";
+
+    heart.style.left =
+        Math.random()*100+"vw";
+
+    heart.style.fontSize =
+        (10+Math.random()*18)+"px";
+
+    heart.style.animationDuration =
+        (8+Math.random()*7)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(
+        ()=>heart.remove(),
+        16000
+    );
+}
+
+setInterval(
+    createHeart,
+    900
+);
+
+
+/* =========================
+   CÁNH HOA
+========================= */
+
+function createPetal(){
+
+    const petal =
+        document.createElement("div");
+
+    petal.className="petal";
+
+    petal.innerHTML =
+        Math.random()>.5
+        ? "✦"
+        : "✧";
+
+    petal.style.left =
+        Math.random()*100+"vw";
+
+    petal.style.fontSize =
+        (8+Math.random()*12)+"px";
+
+    petal.style.animationDuration =
+        (7+Math.random()*8)+"s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(
+        ()=>petal.remove(),
+        16000
+    );
+}
+
+setInterval(
+    createPetal,
+    1300
+);
+
+</script>
+
+</body>
+</html>

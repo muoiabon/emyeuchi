@@ -8,598 +8,313 @@
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
+html, body {
+    width: 100%;
+    height: 100%;
 }
 
-body{
-    overflow:hidden;
-    font-family:Georgia,"Times New Roman",serif;
-    color:white;
-    background:#090510;
+body {
+    overflow: hidden;
+    background: #08060c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/* =========================
-   BẦU TRỜI
-========================= */
+/* NỀN */
 
-.sky{
-    position:fixed;
-    inset:0;
+.sky {
+    position: fixed;
+    inset: 0;
 
     background:
-        radial-gradient(circle at 50% 45%,
-            rgba(255,120,180,.18),
-            transparent 28%),
-
-        radial-gradient(circle at 15% 20%,
-            rgba(170,100,255,.18),
-            transparent 30%),
-
-        radial-gradient(circle at 85% 80%,
-            rgba(255,80,150,.12),
-            transparent 30%),
-
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 90, 160, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(130, 80, 255, 0.10),
+            transparent 30%
+        ),
         linear-gradient(
             135deg,
-            #090510,
-            #140918,
-            #090510
+            #08060c,
+            #120817,
+            #08060c
         );
 }
 
 
-/* =========================
-   SAO
-========================= */
+/* SAO */
 
-.stars{
-    position:fixed;
-    inset:0;
+.stars {
+    position: fixed;
+    inset: 0;
 
     background-image:
-        radial-gradient(circle,
-            rgba(255,255,255,.9) 1px,
-            transparent 1px),
-
-        radial-gradient(circle,
-            rgba(255,180,220,.7) 1px,
-            transparent 1px);
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,170,210,.6) 1px,
+            transparent 1px
+        );
 
     background-size:
-        80px 80px,
-        140px 140px;
+        90px 90px,
+        150px 150px;
 
     background-position:
         20px 30px,
-        60px 90px;
+        70px 100px;
 
-    opacity:.55;
+    opacity: .5;
 
-    animation:stars 25s linear infinite;
+    animation: starsMove 25s linear infinite;
 }
 
-@keyframes stars{
+@keyframes starsMove {
 
-    from{
-        transform:translateY(0);
+    from {
+        transform: translateY(0);
     }
 
-    to{
-        transform:translateY(-50px);
+    to {
+        transform: translateY(-50px);
     }
 
 }
 
 
-/* =========================
-   TRĂNG
-========================= */
+/* TRĂNG */
 
-.moon{
-    position:fixed;
+.moon {
+    position: fixed;
 
-    width:135px;
-    height:135px;
+    width: 110px;
+    height: 110px;
 
-    top:9%;
-    right:12%;
+    top: 10%;
+    right: 12%;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    background:
-        radial-gradient(
-            circle at 35% 35%,
-            #ffffff,
-            #ffeef6 65%,
-            #ffd8e8
-        );
+    background: #fff5f8;
 
     box-shadow:
-        0 0 25px rgba(255,220,235,.7),
-        0 0 70px rgba(255,150,200,.35),
-        0 0 130px rgba(255,100,180,.15);
+        0 0 25px rgba(255,220,235,.6),
+        0 0 80px rgba(255,130,190,.25);
 
-    opacity:.95;
-
-    animation:moonGlow 4s ease-in-out infinite;
+    opacity: .9;
 }
 
-@keyframes moonGlow{
+.moon::after {
+    content: "";
 
-    0%,100%{
-        box-shadow:
-            0 0 25px rgba(255,220,235,.7),
-            0 0 70px rgba(255,150,200,.35);
-    }
+    position: absolute;
 
-    50%{
-        box-shadow:
-            0 0 35px rgba(255,220,235,.9),
-            0 0 100px rgba(255,150,200,.5);
-    }
+    width: 110px;
+    height: 110px;
 
+    border-radius: 50%;
+
+    background: #0c0710;
+
+    left: -28px;
+    top: -10px;
 }
 
 
-/* tạo hình trăng khuyết */
+/* NỘI DUNG */
 
-.moon:after{
-    content:"";
+.container {
 
-    position:absolute;
+    position: relative;
 
-    width:135px;
-    height:135px;
+    width: 100%;
+    height: 100svh;
 
-    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    background:#100815;
+    text-align: center;
 
-    left:-32px;
-    top:-12px;
+    padding: 20px;
 }
 
 
-/* =========================
-   ÁNH SÁNG TRUNG TÂM
-========================= */
+/* CHỮ */
 
-.glow{
-    position:fixed;
+h1 {
 
-    width:450px;
-    height:450px;
+    font-family: Arial, Helvetica, sans-serif;
 
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,110,180,.16),
-            transparent 70%
-        );
-
-    filter:blur(10px);
-
-    animation:glow 5s ease-in-out infinite;
-}
-
-@keyframes glow{
-
-    0%,100%{
-        transform:translate(-50%,-50%) scale(1);
-    }
-
-    50%{
-        transform:translate(-50%,-50%) scale(1.15);
-    }
-
-}
-
-
-/* =========================
-   CARD
-========================= */
-
-.container{
-    position:relative;
-
-    width:100%;
-    height:100svh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:25px;
-}
-
-
-.card{
-
-    position:relative;
-
-    width:min(650px,92vw);
-
-    padding:
-        60px
-        35px
-        55px;
-
-    text-align:center;
-
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.09),
-            rgba(255,150,200,.035)
-        );
-
-    border:
-        1px solid rgba(255,200,225,.18);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.55),
-        inset 0 0 40px rgba(255,160,210,.035);
-
-    backdrop-filter:blur(12px);
-
-    animation:appear 1.8s ease forwards;
-}
-
-@keyframes appear{
-
-    from{
-        opacity:0;
-        transform:translateY(30px) scale(.97);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-}
-
-
-/* =========================
-   DÒNG NHỎ
-========================= */
-
-.tiny{
-
-    font-family:Arial,sans-serif;
-
-    font-size:11px;
-
-    letter-spacing:6px;
-
-    text-transform:uppercase;
-
-    color:rgba(255,210,230,.65);
-
-    margin-bottom:24px;
-}
-
-
-/* =========================
-   TIÊU ĐỀ
-========================= */
-
-h1{
-
-    font-size:clamp(
+    font-size: clamp(
         48px,
         12vw,
         100px
     );
 
-    font-weight:normal;
+    font-weight: 600;
 
-    letter-spacing:2px;
+    letter-spacing: 1px;
 
-    color:#fff8fb;
-
-    text-shadow:
-        0 0 10px rgba(255,170,210,.65),
-        0 0 35px rgba(255,100,180,.3);
-
-    animation:titlePulse 4s ease-in-out infinite;
-}
-
-@keyframes titlePulse{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.025);
-    }
-
-}
-
-
-/* =========================
-   TIM
-========================= */
-
-.heart{
-
-    display:inline-block;
-
-    color:#ff8fb8;
-
-    font-size:.8em;
+    color: white;
 
     text-shadow:
-        0 0 10px #ff7eae,
-        0 0 30px rgba(255,70,150,.7),
-        0 0 60px rgba(255,50,140,.35);
+        0 0 12px rgba(255,150,200,.55),
+        0 0 35px rgba(255,80,160,.25);
 
-    animation:heart 1.5s ease-in-out infinite;
+    animation: appear 1.5s ease forwards;
 }
 
-@keyframes heart{
 
-    0%,100%{
-        transform:scale(1);
+/* TIM */
+
+.heart {
+
+    display: inline-block;
+
+    color: #ff80ad;
+
+    margin-left: 8px;
+
+    text-shadow:
+        0 0 10px rgba(255,80,150,.8),
+        0 0 30px rgba(255,50,140,.45);
+
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+
+    0%, 100% {
+        transform: scale(1);
     }
 
-    15%{
-        transform:scale(1.25);
+    15% {
+        transform: scale(1.25);
     }
 
-    30%{
-        transform:scale(1);
+    30% {
+        transform: scale(1);
     }
 
-    45%{
-        transform:scale(1.15);
+    45% {
+        transform: scale(1.15);
+    }
+
+    60% {
+        transform: scale(1);
     }
 
 }
 
 
-/* =========================
-   DÒNG PHỤ
-========================= */
+/* HIỆU ỨNG HIỆN */
 
-.subtitle{
+@keyframes appear {
 
-    margin-top:28px;
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-    font-size:clamp(
-        15px,
-        3.5vw,
-        21px
-    );
-
-    font-style:italic;
-
-    color:rgba(255,230,240,.72);
-
-    line-height:1.7;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
 }
 
 
-/* =========================
-   DÒNG NGĂN
-========================= */
+/* TIM BAY */
 
-.line{
+.floating-heart {
 
-    width:100px;
-    height:1px;
+    position: fixed;
 
-    margin:30px auto;
+    bottom: -30px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,160,200,.8),
-            transparent
-        );
+    color: rgba(255,130,180,.55);
+
+    pointer-events: none;
+
+    animation: floatUp linear forwards;
 }
 
+@keyframes floatUp {
 
-/* =========================
-   CUỐI CARD
-========================= */
-
-.forever{
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:5px;
-
-    color:rgba(255,255,255,.35);
-}
-
-
-/* =========================
-   HOA / TIM BAY
-========================= */
-
-.floating{
-
-    position:fixed;
-
-    bottom:-40px;
-
-    pointer-events:none;
-
-    color:rgba(255,150,195,.55);
-
-    animation:float linear forwards;
-}
-
-@keyframes float{
-
-    0%{
+    from {
         transform:
             translateY(0)
             translateX(0)
             rotate(0deg);
 
-        opacity:0;
+        opacity: 0;
     }
 
-    15%{
-        opacity:.8;
+    15% {
+        opacity: .8;
     }
 
-    80%{
-        opacity:.55;
+    80% {
+        opacity: .5;
     }
 
-    100%{
+    to {
         transform:
             translateY(-110vh)
-            translateX(70px)
-            rotate(30deg);
+            translateX(60px)
+            rotate(25deg);
 
-        opacity:0;
+        opacity: 0;
     }
 
 }
 
 
-/* =========================
-   CÁNH HOA RƠI
-========================= */
+/* ĐIỆN THOẠI */
 
-.petal{
+@media (max-width: 600px) {
 
-    position:fixed;
+    .moon {
 
-    top:-30px;
+        width: 75px;
+        height: 75px;
 
-    pointer-events:none;
-
-    color:rgba(255,170,205,.4);
-
-    animation:petalFall linear forwards;
-}
-
-@keyframes petalFall{
-
-    from{
-        transform:
-            translateY(0)
-            rotate(0deg);
+        top: 9%;
+        right: 8%;
     }
 
-    to{
-        transform:
-            translateY(110vh)
-            translateX(100px)
-            rotate(360deg);
+    .moon::after {
+
+        width: 75px;
+        height: 75px;
+
+        left: -19px;
+        top: -7px;
     }
 
-}
+    h1 {
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    .moon{
-
-        width:85px;
-        height:85px;
-
-        top:9%;
-        right:8%;
-    }
-
-    .moon:after{
-
-        width:85px;
-        height:85px;
-
-        left:-20px;
-        top:-8px;
-    }
-
-    .card{
-
-        padding:
-            50px
-            22px
-            45px;
-
-        border-radius:25px;
-    }
-
-    .tiny{
-
-        font-size:9px;
-
-        letter-spacing:4px;
-    }
-
-    h1{
-
-        font-size:
-            clamp(
-                42px,
-                13vw,
-                75px
-            );
-    }
-
-    .subtitle{
-
-        font-size:15px;
-    }
-
-}
-
-
-/* =========================
-   MÁY NHỎ
-========================= */
-
-@media(max-width:360px){
-
-    .card{
-
-        padding:
-            40px
-            15px;
-    }
-
-    h1{
-
-        font-size:40px;
-    }
-
-    .subtitle{
-
-        font-size:14px;
+        font-size: clamp(
+            42px,
+            13vw,
+            75px
+        );
     }
 
 }
@@ -614,122 +329,52 @@ h1{
 
 <div class="stars"></div>
 
-<div class="glow"></div>
-
 <div class="moon"></div>
 
 
 <div class="container">
 
-    <div class="card">
-
-        <div class="tiny">
-            just for you ♡
-        </div>
-
-
-        <h1>
-            em yeu chi
-            <span class="heart">♥</span>
-        </h1>
-
-
-        <div class="subtitle">
-            Một chút dịu dàng,<br>
-            dành riêng cho chị.
-        </div>
-
-
-        <div class="line"></div>
-
-
-        <div class="forever">
-            with love · always
-        </div>
-
-    </div>
+    <h1>
+        em yeu chi
+        <span class="heart">♥</span>
+    </h1>
 
 </div>
 
 
 <script>
 
-/* =========================
-   TIM BAY
-========================= */
-
-function createHeart(){
+function createHeart() {
 
     const heart =
         document.createElement("div");
 
-    heart.className="floating";
+    heart.className =
+        "floating-heart";
 
     heart.innerHTML =
-        Math.random() > .5
+        Math.random() > 0.5
         ? "♡"
         : "♥";
 
     heart.style.left =
-        Math.random()*100+"vw";
+        Math.random() * 100 + "vw";
 
     heart.style.fontSize =
-        (10+Math.random()*18)+"px";
+        (10 + Math.random() * 15) + "px";
 
     heart.style.animationDuration =
-        (8+Math.random()*7)+"s";
+        (7 + Math.random() * 7) + "s";
 
     document.body.appendChild(heart);
 
-    setTimeout(
-        ()=>heart.remove(),
-        16000
-    );
+    setTimeout(() => {
+        heart.remove();
+    }, 15000);
+
 }
 
-setInterval(
-    createHeart,
-    900
-);
-
-
-/* =========================
-   CÁNH HOA
-========================= */
-
-function createPetal(){
-
-    const petal =
-        document.createElement("div");
-
-    petal.className="petal";
-
-    petal.innerHTML =
-        Math.random()>.5
-        ? "✦"
-        : "✧";
-
-    petal.style.left =
-        Math.random()*100+"vw";
-
-    petal.style.fontSize =
-        (8+Math.random()*12)+"px";
-
-    petal.style.animationDuration =
-        (7+Math.random()*8)+"s";
-
-    document.body.appendChild(petal);
-
-    setTimeout(
-        ()=>petal.remove(),
-        16000
-    );
-}
-
-setInterval(
-    createPetal,
-    1300
-);
+setInterval(createHeart, 1000);
 
 </script>
 
